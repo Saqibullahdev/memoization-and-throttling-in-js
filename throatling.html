@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throatling Js</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0c0c0c;
+        }
+    </style>
+</head>
+<body>
+    <button style="background-color: orange; padding:10px 10px 10px 10px; border:none" id="btn">Call Api</button>
+    <script>
+        let btn = document.getElementById('btn');
+        btn.addEventListener('click',throated(throatling,1500));
+        function throatling(){
+            console.log("Api Called");
+        }
+
+
+        function throated(fn,delay){
+            let prev = 0;
+            return function(){
+               if(!prev==0) console.log("i clicked button for api call but will not call api until 1.5 sec");
+                let now= new Date().getTime();
+                if(now-prev>delay){
+                    fn();
+                    prev=now;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
